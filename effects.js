@@ -5,6 +5,7 @@ class Effects {
         this.object = object;
         this.sounds = sounds;
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        this.audioSource = false;
         // Other initialization if needed
     }
 
@@ -20,24 +21,22 @@ class Effects {
 
     // Method to play sound effects
     playSound(soundName) {
-        // Retrieve the audio element from the sounds object
         var audio = this.sounds[soundName];
         audio.crossOrigin = 'anonymous';
-    
-        // Check if the audio element exists
         if (!audio) {
             console.error("Audio element not found for sound name:", soundName);
             return;
         }
-    
-        
-    
-        // Create a new source node and connect it to the audio context's destination
-        let source = this.audioContext.createMediaElementSource(audio);
-        source.connect(this.audioContext.destination);
-    
-        // Start playing the audio
         audio.play();
+        /*if (!this.audioSource) {
+            this.audioSource = this.audioContext.createMediaElementSource(audioElement);
+            analyser = this.audioContext.createAnalyser();
+            this.audioSource.connect(analyser);
+            analyser.connect(this.audioContext.destination);
+        }
+        */
+    
+
     }
     crashLanding(){
         console.log("crashed")

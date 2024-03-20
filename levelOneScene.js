@@ -99,7 +99,7 @@ class levelOneScene extends Scene {
             this.player.fuel -= 0.1;
             if (!this.player.collided){
             this.particleManager.shipThrust(this.player);
-            //this.playerEffects.playSound("thrust_audio");
+            this.playerEffects.playSound("thrust_audio");
             }
         }
         if(this.player.fuel < 0){
@@ -183,14 +183,16 @@ class levelOneScene extends Scene {
             //particles.celebrate
             this.playCountDown = true;
             this.countDownStart = this.gameState.totalTime;
+            this.playerEffects.playSound("celebrate_audio");
         }
         if (crashed){
             this.player.collided = true;
             this.player.crashed = true;
             this.particleManager.shipCrash(this.player);
+            this.playerEffects.playSound("crash_audio");
             this.playCountDown = true;
             this.countDownStart = this.gameState.totalTime;
-            //this.mainmenutransition
+            
         }
     }
 }

@@ -10,7 +10,7 @@ class ChangeControlsScene extends Scene {
     draw() {
         if (!this.drawnBefore) {
             this.buttons = [
-                { label: "Move Up", control: JSON.parse(localStorage.getItem('controls')).up },
+                { label: "Thrust", control: JSON.parse(localStorage.getItem('controls')).up },
                 { label: "Rotate Left", control: JSON.parse(localStorage.getItem('controls')).left },
                 { label: "Rotate Right", control: JSON.parse(localStorage.getItem('controls')).right },
             ];
@@ -54,9 +54,9 @@ class ChangeControlsScene extends Scene {
                         localStorage.setItem('controls', JSON.stringify(controls)); // Store updated controls in local storage
                         button.textContent = `${buttonInfo.label}: ${(event.code)}`;
                         button.style.background = "white";
-                        document.removeEventListener('keypress', keypressHandler);
+                        document.removeEventListener('keydown', keypressHandler);
                     };
-                    document.addEventListener('keypress', keypressHandler);
+                    document.addEventListener('keydown', keypressHandler);
                 });
                 buttonContainer.appendChild(button);
             });

@@ -51,10 +51,17 @@ function keyUpHandler(event) {
 }
 
 var resources = {};
-thrust_audio = new Audio("./media/Thrust.mp3");
+thrust_audio = new Audio();
+thrust_audio.src = "./media/Thrust.mp3"
+crash_audio = new Audio();
+crash_audio.src = "./media/Crash.mp3"
+celebrate_audio = new Audio();
+celebrate_audio.src = "./media/Irish.mp3"
 resources.audio = {};
 resources.audio.thrust_audio = thrust_audio;
+resources.audio.celebrate_audio = celebrate_audio;
 resources.backGroundImage = "./Background-4.png";
+resources.audio.crash_audio = crash_audio;
 resources.shipThrust = new Image();
 resources.shipThrust.src = "./media/fire.png";
 resources.explode = new Image();
